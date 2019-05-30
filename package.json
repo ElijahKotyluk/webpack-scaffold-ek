@@ -1,0 +1,11 @@
+{
+  "name": "webpack-scaffold-vuejs",
+  "version": "1.0.0",
+  "description": "webpack scaffolding tool for vuejs projects.",
+  "main": "index.js",
+  "author": "Elijah Kotyluk",
+  "license": "MIT",
+  "dependencies": {
+    "yeoman-generator": "^4.0.1"
+  }
+}
