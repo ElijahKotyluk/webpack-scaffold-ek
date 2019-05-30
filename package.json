@@ -2,7 +2,7 @@
   "name": "webpack-scaffold-vuejs",
   "version": "1.0.0",
   "description": "webpack scaffolding tool for vuejs projects.",
-  "main": "index.js",
+  "main": "generator.js",
   "author": "Elijah Kotyluk",
   "license": "MIT",
   "dependencies": {
