@@ -1,4 +1,6 @@
 const Generate = require('yeoman-generator');
+// import webpack-scaffold helper functions:
+const { List, Input } = require('@webpack-cli/webpack-scaffold');
 
 module.exports = class WebpackGenerator extends Generator {
   constructor(args, opts) {
@@ -17,7 +19,14 @@ module.exports = class WebpackGenerator extends Generator {
     }
   }
   // Prompt user preferences
-  prompting() {}
+  prompting() {
+    return this.prompt({
+      // Prompt questions for user:
+      Input('project-name', 'What would you like to name your project? (my-project)')
+    }).then(answers => {
+      // Do something with user's answers:
+    });
+  }
   // Write config files to system
   writing() {}
   // Install dependencies

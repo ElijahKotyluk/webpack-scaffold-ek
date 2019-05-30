@@ -6,6 +6,7 @@
   "author": "Elijah Kotyluk",
   "license": "MIT",
   "dependencies": {
+    "@webpack-cli/webpack-scaffold": "^0.1.5",
     "yeoman-generator": "^4.0.1"
   }
 }
