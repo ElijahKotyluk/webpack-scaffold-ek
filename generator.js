@@ -80,9 +80,8 @@ module.exports = class WebpackGenerator extends Generator {
 			{ src: 'public/favicon.ico', dist: `${publicFolder}/favicon.ico` },
 			{ src: 'src/main.js', dist: `${src}/${entry}.js` },
 			{ src: 'src/App.vue', dist: `${src}/App.vue` },
-			{ src: 'src/assets/logo.png', dist: `${src}/assets/logo.png` },
 			{ src: 'src/components/HelloWorld.vue', dist: `${src}/components/HelloWorld.vue` },
-			{ src: 'config/gitignore', dist: '.gitignore'}
+			{ src: 'git/gitignore', dist: '.gitignore'}
 		]
 
 		this.fs.copyTpl(
