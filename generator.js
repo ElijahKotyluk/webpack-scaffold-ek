@@ -12,7 +12,7 @@ module.exports = class WebpackGenerator extends Generator {
     super(args, opts);
     // Each key generates a webpack config file:
     // dev => development webpack config
-    opts.env.configurations = {
+    opts.env.configuration = {
       dev: {
         topScope: [
           // Fn definitions & imports
@@ -27,7 +27,8 @@ module.exports = class WebpackGenerator extends Generator {
 
     this.manager = {
       yarn: false,
-      npm: false
+      npm: false,
+      bower: false
     }
 
     this.defaults = {
@@ -66,6 +67,14 @@ module.exports = class WebpackGenerator extends Generator {
 			this.answers.inFolder = (answers.inFolder !== '') ? answers.inFolder : this.defaults.inFolder;
 			this.answers.outputFolder = (answers.outputFolder !== '') ? answers.outputFolder : this.defaults.outputFolder;
 			this.answers.publicFolder = (answers.publicFolder !== '') ? answers.publicFolder : this.defaults.publicFolder;
+
+      this.manager[this.answers.manager] = true;
+      this.options.env.configuration.dev.webpackOptions = createWebpackConfig(this.answers);
+      this.options.env.configuration.dev.topScope = [
+        "const HtmlWebpackPlugin = require('html-webpack-plugin')",
+        "const CopyWebpackPlugin = require('copy-webpack-plugin')",
+        "const VueLoaderPlugin = require('vue-loader/lib/plugin')"
+      ];
     });
   }
   // Write config files to system
@@ -78,9 +87,9 @@ module.exports = class WebpackGenerator extends Generator {
 		const { entry, inFolder: src, publicFolder } = this.answers;
 		const templates = [
 			{ src: 'public/favicon.ico', dist: `${publicFolder}/favicon.ico` },
-			{ src: 'src/main.js', dist: `${src}/${entry}.js` },
-			{ src: 'src/App.vue', dist: `${src}/App.vue` },
-			{ src: 'src/components/HelloWorld.vue', dist: `${src}/components/HelloWorld.vue` },
+			{ src: 'src/js/main.js', dist: `${src}/js/${entry}.js` },
+			{ src: 'src/js/App.vue', dist: `${src}/js/App.vue` },
+			{ src: 'src/js/components/HelloWorld.vue', dist: `${src}/js/components/HelloWorld.vue` },
 			{ src: 'git/gitignore', dist: '.gitignore'}
 		]
 
