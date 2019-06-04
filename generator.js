@@ -20,9 +20,7 @@ module.exports = class WebpackGenerator extends Generator {
         webpackOptions: {
           // Webpack config
         }
-      },
-      // Production configuration:
-      prod: {}
+      }
     }
 
     this.manager = {
