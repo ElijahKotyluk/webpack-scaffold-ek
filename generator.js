@@ -82,12 +82,12 @@ module.exports = class WebpackGenerator extends Generator {
 		this.fs.extendJSON(this.destinationPath('.babelrc'), createBabelrc());
 		this.fs.extendJSON(this.destinationPath('.eslintrc'), createEslintrc());
 
-		const { entry, inFolder: src, publicFolder } = this.answers;
+		const { entry, srcFolder, publicFolder } = this.answers;
 		const templates = [
 			{ src: 'public/favicon.ico', dist: `${publicFolder}/favicon.ico` },
-			{ src: 'src/js/main.js', dist: `${src}/js/${entry}.js` },
-			{ src: 'src/js/App.vue', dist: `${src}/js/App.vue` },
-			{ src: 'src/js/components/HelloWorld.vue', dist: `${src}/js/components/HelloWorld.vue` },
+			{ src: 'src/js/main.js', dist: `${srcFolder}/js/${entry}.js` },
+			{ src: 'src/js/App.vue', dist: `${srcFolder}/js/App.vue` },
+			{ src: 'src/js/components/HelloWorld.vue', dist: `${srcFolder}/js/components/HelloWorld.vue` },
 			{ src: 'git/gitignore', dist: '.gitignore'}
 		]
 
