@@ -1,17 +1,17 @@
 module.exports = (answers) => {
 
-	const { name, entry, inFolder: src } = answers;
+	const { name, entry, srcFolder } = answers;
 
   return ({
     "name": name,
     "version": "1.0.0",
-    "main": `${src}/${entry}.js`,
+    "main": `${srcFolder}/js/${entry}.js`,
     "license": "MIT",
     "scripts": {
       "serve": "webpack-dev-server --mode development --progress --hot --open",
       "build": "webpack --mode production --progress",
-      "lint": `eslint  ${src}/*.{js,vue} ${src}/**/*.{js,vue}`,
-      "lint:fix": `eslint --fix  ${src}/*.{js,vue} ${src}/**/*.{js,vue}`
+      "lint": `eslint  ${srcFolder}/*.{js,vue} ${srcFolder}/**/*.{js,vue}`,
+      "lint:fix": `eslint --fix  ${srcFolder}/*.{js,vue} ${srcFolder}/**/*.{js,vue}`
     },
     "dependencies": {
       "vue": "^2.6.9"

@@ -31,7 +31,7 @@ module.exports = class WebpackGenerator extends Generator {
 
     this.defaults = {
       name: 'my-vue-project',
-      inFolder: 'src',
+      srcFolder: 'src',
       entry: 'main',
       outputFolder: 'dist',
       publicFolder: 'public'
@@ -62,7 +62,7 @@ module.exports = class WebpackGenerator extends Generator {
       this.answers = answers;
 			this.answers.name = (answers.name !== '') ? answers.name.toLowerCase() : this.defaults.name;
 			this.answers.entry = (answers.entry !== '') ? answers.entry : this.defaults.entry;
-			this.answers.inFolder = (answers.inFolder !== '') ? answers.inFolder : this.defaults.inFolder;
+			this.answers.srcFolder = (answers.srcFolder !== '') ? answers.srcFolder : this.defaults.srcFolder;
 			this.answers.outputFolder = (answers.outputFolder !== '') ? answers.outputFolder : this.defaults.outputFolder;
 			this.answers.publicFolder = (answers.publicFolder !== '') ? answers.publicFolder : this.defaults.publicFolder;
 
@@ -71,7 +71,7 @@ module.exports = class WebpackGenerator extends Generator {
       this.options.env.configuration.dev.topScope = [
         "const HtmlWebpackPlugin = require('html-webpack-plugin')",
         "const CopyWebpackPlugin = require('copy-webpack-plugin')",
-        "const VueLoaderPlugin = require('vue-loader/lib/plugin')"
+        "const VueLoaderPlugin = require('vue-loader/lib/plugin')\n"
       ];
     });
   }
