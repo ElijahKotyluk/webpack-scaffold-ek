@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>{{ this.greet }}</h1>
     <hello-world :greet="greet" />
   </div>
 </template>
@@ -15,7 +14,7 @@ export default {
     HelloWorld
   },
   data: () => ({
-    greet: 'it worked'
+    greet: 'Hello World!'
   })
 }
 </script>

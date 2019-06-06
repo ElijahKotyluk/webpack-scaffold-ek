@@ -71,7 +71,8 @@ module.exports = class WebpackGenerator extends Generator {
       this.options.env.configuration.dev.topScope = [
         "const HtmlWebpackPlugin = require('html-webpack-plugin')",
         "const CopyWebpackPlugin = require('copy-webpack-plugin')",
-        "const VueLoaderPlugin = require('vue-loader/lib/plugin')\n"
+        "const VueLoaderPlugin = require('vue-loader/lib/plugin')",
+        "\n"
       ];
     });
   }

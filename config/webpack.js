@@ -3,39 +3,45 @@ module.exports = (answers) => {
 
 	return {
 		entry: `"./${srcFolder}/js/${entry}.js"`,
-		mode: '"development"',
+		mode: "development",
 		module: {
 		  rules: [
-			{
-			  test: "/\\.js$/",
-			  exclude: "/node_modules/",
-			  loader: '"babel-loader"',
-			},
-			{
-			  test: "/\\.vue$/",
-			  exclude: "/node_modules/",
-			  loader: '"vue-loader"',
-			},
-			{
-			  test: "/\\.(png|jpe?g|gif|webp)(\\?.*)?$/",
-			  loader: '"file-loader"',
-			},
-			{
-			  test: "/\\.css$/",
-			  oneOf: [
 				{
-				  resourceQuery: "/\\?vue/",
-				  use: [
+					test: "/\.vue$/",
+					exclude: "/node_modules/",
+					loader: '"vue-loader"',
+				},
+				{
+					enforce: "pre",
+					test: /\.js$/,
+					exclude: /node_modules/,
+					loader: "eslint-loader"
+				},
+				{
+				  test: "/\.js$/",
+				  exclude: "/node_modules/",
+				  loader: "babel-loader",
+				},
+				{
+				  test: "/\\.(png|jpe?g|gif|webp)(\\?.*)?$/",
+				  loader: '"file-loader"',
+				},
+				{
+				  test: "/\\.css$/",
+				  oneOf: [
 					{
-					  loader: '"vue-style-loader"',
-					},
-					{
-					  loader: '"css-loader"',
+					  resourceQuery: "/\\?vue/",
+					  use: [
+						{
+						  loader: '"vue-style-loader"',
+						},
+						{
+						  loader: '"css-loader"',
+						},
+					  ],
 					},
 				  ],
 				},
-			  ],
-			},
 		  ],
 		},
 		plugins: [

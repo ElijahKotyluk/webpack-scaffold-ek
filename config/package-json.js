@@ -25,6 +25,7 @@ module.exports = (answers) => {
       "css-loader": "^2.1.1",
       "eslint": "^5.15.2",
       "eslint-config-airbnb-base": "^13.1.0",
+			"eslint-loader": "^2.1.2",
       "eslint-plugin-import": "^2.16.0",
       "eslint-plugin-vue": "^5.2.2",
       "file-loader": "^3.0.1",
