@@ -23,12 +23,14 @@ module.exports = class WebpackGenerator extends Generator {
       }
     }
 
+    // Package managers:
     this.manager = {
       yarn: false,
       npm: false,
       bower: false
     }
 
+    // Default answers:
     this.defaults = {
       name: 'my-vue-project',
       srcFolder: 'src',
@@ -37,7 +39,12 @@ module.exports = class WebpackGenerator extends Generator {
       publicFolder: 'public'
     }
   }
-  // Prompt user preferences
+  // Set root path:
+  paths() {
+
+  }
+
+  // Prompt user preferences:
   prompting() {
 
     // Validate project name:
@@ -70,32 +77,35 @@ module.exports = class WebpackGenerator extends Generator {
       this.options.env.configuration.dev.webpackOptions = createWebpackConfig(this.answers);
       this.options.env.configuration.dev.topScope = [
         "const HtmlWebpackPlugin = require('html-webpack-plugin')",
-        "const CopyWebpackPlugin = require('copy-webpack-plugin')",
         "const VueLoaderPlugin = require('vue-loader/lib/plugin')",
+        "const path = require('path')",
         "\n"
       ];
     });
   }
   // Write config files to system
   writing() {
+    // Set root destination after prompt:
+    this.destinationRoot(`${this.answers.name}`)
+
     this.config.set('configuration', this.options.env.configuration);
 		this.fs.extendJSON(this.destinationPath('package.json'), createPackageJson(this.answers));
 		this.fs.extendJSON(this.destinationPath('.babelrc'), createBabelrc());
 		this.fs.extendJSON(this.destinationPath('.eslintrc'), createEslintrc());
 
-		const { entry, srcFolder, publicFolder } = this.answers;
+		const { entry, name: rootDir, srcFolder, publicFolder } = this.answers;
 		const templates = [
 			{ src: 'public/favicon.ico', dist: `${publicFolder}/favicon.ico` },
 			{ src: 'src/js/main.js', dist: `${srcFolder}/js/${entry}.js` },
 			{ src: 'src/js/App.vue', dist: `${srcFolder}/js/App.vue` },
 			{ src: 'src/js/components/HelloWorld.vue', dist: `${srcFolder}/js/components/HelloWorld.vue` },
-			{ src: 'git/gitignore', dist: '.gitignore'}
+			{ src: 'git/gitignore', dist: `.gitignore`}
 		]
 
 		this.fs.copyTpl(
 			this.templatePath('public/index.html'),
 			this.destinationPath(`${publicFolder}/index.html`),
-			{ title: this.answers.name }
+			{ title: rootDir }
 		);
 
 		templates.forEach(template => {
