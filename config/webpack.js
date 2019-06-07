@@ -3,6 +3,10 @@ module.exports = (answers) => {
 
 	return {
 		entry: `"./${srcFolder}/js/${entry}.js"`,
+		output: {
+			path: `path.resolve(__dirname, "${dist}")`,
+			filename: `"${entry}.bundle.js"`
+		},
 		mode: '"development"',
 		module: {
 		  rules: [
@@ -52,14 +56,6 @@ module.exports = (answers) => {
 				},
 				template: './${publicFolder}/index.html',
 		  })`,
-		  `new CopyWebpackPlugin([
-			{
-			  from: './${publicFolder}',
-			  to: './${dist}',
-			  toType: 'dir',
-			  ignore: ['.DS_Store'],
-			}
-		  ])`,
 		],
 	}
 };
