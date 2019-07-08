@@ -1,11 +1,7 @@
 module.exports = () => ({
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
     "parserOptions": {
-        "parser": "babel-eslint"
+        parser: "babel-eslint",
+        "requireConfigFile": false
     },
     "extends": [
         "airbnb-base",
@@ -19,10 +15,6 @@ module.exports = () => ({
             "error",
             2
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
         "quotes": [
             "error",
             "single"
@@ -31,7 +23,6 @@ module.exports = () => ({
             "error",
             "always"
         ],
-        "no-unused-vars": 1,
-        "no-console": 0
+        "no-unused-vars": 1
     }
 });
