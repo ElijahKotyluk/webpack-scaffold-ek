@@ -1,7 +1,7 @@
 {
   "name": "webpack-scaffold-ek",
   "version": "0.0.1",
-  "description": "webpack scaffolding tool for vuejs projects.",
+  "description": "webpack scaffolding tool for Vue.js projects.",
   "main": "generator.js",
   "repository": {
     "type": "git",

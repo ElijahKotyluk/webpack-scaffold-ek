@@ -4,8 +4,8 @@ const { List, Input, InputValidate } = require('@webpack-cli/webpack-scaffold');
 
 const createWebpackConfig = require('./config/webpack');
 const createPackageJson = require('./config/package-json');
-const createBabelrc = require('./config/babelrc');
-const createEslintrc = require('./config/eslintrc');
+const createBabelrc = require('./config/babel');
+const createEslintrc = require('./config/eslint');
 
 module.exports = class WebpackGenerator extends Generator {
   constructor(args, opts) {
@@ -99,7 +99,8 @@ module.exports = class WebpackGenerator extends Generator {
 			{ src: 'src/js/main.js', dist: `${srcFolder}/js/${entry}.js` },
 			{ src: 'src/js/App.vue', dist: `${srcFolder}/js/App.vue` },
 			{ src: 'src/js/components/HelloWorld.vue', dist: `${srcFolder}/js/components/HelloWorld.vue` },
-			{ src: 'git/gitignore', dist: `.gitignore`}
+      { src: 'git/gitignore', dist: `.gitignore`},
+      { src: 'test/test.spec.js', dist: `test/test.spec.js`}
 		]
 
 		this.fs.copyTpl(
@@ -110,7 +111,7 @@ module.exports = class WebpackGenerator extends Generator {
 
 		templates.forEach(template => {
 			this.fs.copyTpl(
-				this.templatePath(template.src),
+        this.templatePath(template.src),
 				this.destinationPath(template.dist)
 			);
 		})
