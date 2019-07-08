@@ -1,4 +1,4 @@
-# webpack-scaffold-vuejs
+# webpack-scaffold-ek
 
 ### Install webpack-cli globally:
 `npm i webpack-cli -g`
@@ -9,5 +9,5 @@
 
 ## Currently working on:
  -  [ ] Production build for webpack
- -  [ ] Adding optional unit test integration
- -  [ ] Cleaning up Templates
+ -  [x] Add unit testing
+ -  [ ] Clean up Templates

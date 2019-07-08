@@ -8,9 +8,15 @@
     "url": "git+https://github.com/ElijahKotyluk/webpack-scaffold-ek.git"
   },
   "author": "Elijah Kotyluk",
-    "license": "ISC",
+  "license": "ISC",
+  "scripts": {
+    "commit": "yarn git-cz"
+  },
   "dependencies": {
     "@webpack-cli/webpack-scaffold": "^0.1.5",
     "yeoman-generator": "^4.0.1"
+  },
+  "devDependencies": {
+    "commitizen": "^3.1.1"
   }
 }
