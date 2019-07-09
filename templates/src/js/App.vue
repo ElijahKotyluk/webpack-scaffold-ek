@@ -14,7 +14,7 @@ export default {
     HelloWorld,
   },
   data: () => ({
-    greet: 'Hello World!',
+    greet: 'Welcome to your new Vue project',
   }),
 };
 </script>
@@ -26,6 +26,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 </style>
