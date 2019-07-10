@@ -35,6 +35,7 @@ module.exports = class WebpackGenerator extends Generator {
       name: 'my-vue-project',
       srcFolder: 'src',
       entry: 'main',
+      styleEntry: 'main',
       outputFolder: 'dist',
       publicFolder: 'public'
     }
@@ -60,7 +61,8 @@ module.exports = class WebpackGenerator extends Generator {
     return this.prompt([
       InputValidate('name', 'How do you want to name your project? (my-vue-project)', validateName),
       Input('srcFolder', 'Which folder will your source code be in? (src)'),
-      Input('entry', 'Which is the entry point of your app? (main)'),
+      Input('entry', 'What would you like the entry point of your app to be named? (main)'),
+      Input('styleEntry', 'What would you like the entry point of your styles to be named? (main)'),
       Input('outputFolder', 'Which folder will your generated bundles be in? (dist)'),
       Input('publicFolder', 'Which folder will your public assets be in? (public)'),
       List('manager', 'Which package manager do you prefer?', ['yarn', 'npm'])
@@ -68,7 +70,8 @@ module.exports = class WebpackGenerator extends Generator {
       // Do something with user's answers:
       this.answers = answers;
 			this.answers.name = (answers.name !== '') ? answers.name.toLowerCase() : this.defaults.name;
-			this.answers.entry = (answers.entry !== '') ? answers.entry : this.defaults.entry;
+      this.answers.entry = (answers.entry !== '') ? answers.entry : this.defaults.entry;
+      this.answers.styleEntry = (answers.styleEntry !== '') ? answers.styleEntry : this.defaults.styleEntry;
 			this.answers.srcFolder = (answers.srcFolder !== '') ? answers.srcFolder : this.defaults.srcFolder;
 			this.answers.outputFolder = (answers.outputFolder !== '') ? answers.outputFolder : this.defaults.outputFolder;
 			this.answers.publicFolder = (answers.publicFolder !== '') ? answers.publicFolder : this.defaults.publicFolder;
@@ -77,8 +80,10 @@ module.exports = class WebpackGenerator extends Generator {
       this.options.env.configuration.dev.webpackOptions = createWebpackConfig(this.answers);
       this.options.env.configuration.dev.topScope = [
         "const HtmlWebpackPlugin = require('html-webpack-plugin')",
+        "const MiniCssExtractPlugin = require('mini-css-extract-plugin')",
         "const VueLoaderPlugin = require('vue-loader/lib/plugin')",
         "const path = require('path')",
+        "const isDev = process.env.NODE_ENV !== 'production'",
         "\n"
       ];
     });
@@ -93,10 +98,11 @@ module.exports = class WebpackGenerator extends Generator {
 		this.fs.extendJSON(this.destinationPath('.babelrc'), createBabelrc());
 		this.fs.extendJSON(this.destinationPath('.eslintrc'), createEslintrc());
 
-		const { entry, name: rootDir, srcFolder, publicFolder } = this.answers;
+		const { entry, styleEntry, name: rootDir, srcFolder, publicFolder } = this.answers;
 		const templates = [
 			{ src: 'public/favicon.ico', dist: `${publicFolder}/favicon.ico` },
-			{ src: 'src/js/main.js', dist: `${srcFolder}/js/${entry}.js` },
+      { src: 'src/js/main.js', dist: `${srcFolder}/js/${entry}.js` },
+      { src: 'src/style/main.scss', dist: `${srcFolder}/style/${styleEntry}.scss`},
 			{ src: 'src/js/App.vue', dist: `${srcFolder}/js/App.vue` },
 			{ src: 'src/js/components/HelloWorld.vue', dist: `${srcFolder}/js/components/HelloWorld.vue` },
       { src: 'git/gitignore', dist: `.gitignore`},

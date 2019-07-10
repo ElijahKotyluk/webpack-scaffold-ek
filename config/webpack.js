@@ -1,11 +1,14 @@
 module.exports = (answers) => {
-	const { name, entry, srcFolder, outputFolder: dist, publicFolder } = answers;
+	const { name, entry, styleEntry, srcFolder, outputFolder: dist, publicFolder } = answers;
 
 	return {
-		entry: `"./${srcFolder}/js/${entry}.js"`,
+		entry: [
+			`"./${srcFolder}/js/${entry}.js"`,
+			`"./${srcFolder}/style/${styleEntry}.scss"`
+		],
 		output: {
 			path: `path.resolve(__dirname, "${dist}")`,
-			filename: `"${entry}.bundle.js"`
+			filename: `"${entry}.bundle.js"`,
 		},
 		mode: '"development"',
 		module: {
@@ -31,20 +34,17 @@ module.exports = (answers) => {
 				  loader: '"file-loader"',
 				},
 				{
-				  test: "/\\.css$/",
-				  oneOf: [
-					{
-					  resourceQuery: "/\\?vue/",
-					  use: [
+					test: "/\.(sa|sc|c)ss$/",
+					use: [
 						{
-						  loader: '"vue-style-loader"',
+							loader: 'MiniCssExtractPlugin.loader',
+							options: {
+								hmr: 'isDev',
+							},
 						},
-						{
-						  loader: '"css-loader"',
-						},
-					  ],
-					},
-				  ],
+						'"css-loader"',
+						'"sass-loader"',
+					],
 				},
 		  ],
 		},
@@ -56,6 +56,10 @@ module.exports = (answers) => {
 				},
 				template: './${publicFolder}/index.html',
 		  })`,
+		  `new MiniCssExtractPlugin({
+			  filename: isDev ? '${styleEntry}.css' : '${styleEntry}.[hash].css',
+			  chunkFileName: isDev ? '[id].css' : '[id].[hash].css',
+			})`,
 		],
 	}
 };

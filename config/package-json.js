@@ -8,7 +8,9 @@ module.exports = (answers) => {
     "main": `${srcFolder}/js/${entry}.js`,
     "license": "MIT",
     "jest": {
-      "root": "test/",
+      "roots": [
+        "test/"
+      ],
       "testMatch": [
         "test/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
@@ -42,6 +44,9 @@ module.exports = (answers) => {
       "file-loader": "^3.0.1",
       "html-webpack-plugin": "^3.2.0",
       "jest": "^24.8.0",
+      "mini-css-extract-plugin": "^0.7.0",
+      "node-sass": "^4.12.0",
+      "sass-loader": "^7.1.0",
       "vue-loader": "^15.7.0",
       "vue-template-compiler": "^2.6.9",
       "webpack": "^4.29.6",
