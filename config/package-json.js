@@ -8,9 +8,9 @@ module.exports = (answers) => {
     "main": `${srcFolder}/js/${entry}.js`,
     "license": "MIT",
     "jest": {
+      "root": "test/",
       "testMatch": [
         "test/**/*.[jt]s?(x)",
-        "**/test/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
       ]
     },
