@@ -7,7 +7,10 @@
 `webpack-cli init webpack-scaffold-ek`
 
 
-## Currently working on:
- -  [ ] Production build for webpack
- -  [x] Add unit testing
- -  [ ] Clean up Templates
+## Current features:
+ -  [x] Webpack
+ -  [x] Babel 
+ -  [x] ESLint
+ -  [x] Jest
+ -  [x] Commitizen
+ -  [x] SCSS/SASS/CSS
