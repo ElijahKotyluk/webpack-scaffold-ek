@@ -1,4 +1,5 @@
 # webpack-scaffold-ek
+A Vue.js scaffolding cli.
 
 ### Install webpack-cli globally:
 `npm i webpack-cli -g`
