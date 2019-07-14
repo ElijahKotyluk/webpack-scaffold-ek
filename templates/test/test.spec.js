@@ -1,9 +1,9 @@
-/* 
-    Test specs directory:
-*/
+import { mount } from '@vue/test-utils'
+import HelloWorld from '../src/js/components/HelloWorld.vue'
 
-describe('example test', () => {
-    it('should be a valid example test', () => {
-        expect(1).toBeTruthy();
-    });
-});
+describe('HelloWorld', () => {
+    test('is a Vue instance', () => {
+        const wrapper = mount(HelloWorld)
+        expect(wrapper.isVueInstance()).toBeTruthy()
+    })
+})

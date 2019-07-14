@@ -8,9 +8,18 @@ module.exports = (answers) => {
     "main": `${srcFolder}/js/${entry}.js`,
     "license": "MIT",
     "jest": {
+      "moduleFileExtensions": [
+        "js",
+        "json",
+        "vue"
+      ],
       "roots": [
         "test/"
       ],
+      "transform": {
+        "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+        ".*\\.(vue)$": "vue-jest"
+      },
       "testMatch": [
         "test/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
@@ -31,6 +40,7 @@ module.exports = (answers) => {
       "@babel/core": "^7.5.0",
       "@babel/preset-env": "^7.5.0",
       "@babel/preset-stage-2": "^7.0.0",
+      "@vue/test-utils": "^1.0.0-beta.25",
       "babel-eslint": "^10.0.2",
       "babel-jest": "^24.8.0",
       "babel-loader": "^8.0.6",
@@ -47,6 +57,7 @@ module.exports = (answers) => {
       "mini-css-extract-plugin": "^0.7.0",
       "node-sass": "^4.12.0",
       "sass-loader": "^7.1.0",
+      "vue-jest": "^4.0.0-beta.2",
       "vue-loader": "^15.7.0",
       "vue-template-compiler": "^2.6.9",
       "webpack": "^4.29.6",
