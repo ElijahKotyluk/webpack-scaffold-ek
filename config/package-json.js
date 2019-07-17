@@ -34,7 +34,8 @@ module.exports = (answers) => {
       "commit": "yarn git-cz"
     },
     "dependencies": {
-      "vue": "^2.6.9"
+      "vue": "^2.6.9",
+      "vuex": "3.1.1"
     },
     "devDependencies": {
       "@babel/core": "^7.5.0",
