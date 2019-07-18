@@ -9,6 +9,8 @@ A Vue.js scaffolding cli.
 
 
 ## Current features:
+ -  [x] Vue.js
+ -  [x] Vuex
  -  [x] Webpack
  -  [x] Babel 
  -  [x] ESLint
