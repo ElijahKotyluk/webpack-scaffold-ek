@@ -18,3 +18,9 @@ A Vue.js scaffolding cli.
  -  [x] Jest
  -  [x] Commitizen
  -  [x] SCSS/SASS/CSS
+
+## Soon:
+- [ ] Vue Router
+- [ ] Firebase(Optional)
+- [ ] Webpack(Prod. build)
+- [ ] Makefile/Bazel
