@@ -11,6 +11,7 @@ A Vue.js scaffolding cli.
 
 ## Current features:
  -  [x] Vue.js
+ -  [x] VueRouter
  -  [x] Vuex
  -  [x] Webpack
  -  [x] Babel 
@@ -20,7 +21,6 @@ A Vue.js scaffolding cli.
  -  [x] SCSS/SASS/CSS
 
 ## Soon:
-- [ ] Vue Router
 - [ ] Firebase(Optional)
 - [ ] Webpack(Prod. build)
 - [ ] Makefile/Bazel
