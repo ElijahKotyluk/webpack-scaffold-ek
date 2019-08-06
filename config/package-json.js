@@ -35,7 +35,8 @@ module.exports = (answers) => {
     },
     "dependencies": {
       "vue": "^2.6.9",
-      "vuex": "3.1.1"
+      "vuex": "^3.1.1",
+      "vue-router": "^3.1.1",
     },
     "devDependencies": {
       "@babel/core": "^7.5.0",

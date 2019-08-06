@@ -105,6 +105,7 @@ module.exports = class WebpackGenerator extends Generator {
       { src: 'src/style/main.scss', dist: `${srcFolder}/style/${styleEntry}.scss`},
 			{ src: 'src/js/App.vue', dist: `${srcFolder}/js/App.vue` },
       { src: 'src/js/components/HelloWorld.vue', dist: `${srcFolder}/js/components/HelloWorld.vue` },
+      { src: 'src/js/router/index.js', dist: `${srcFolder}/js/router/index.js` },
       { src: 'src/js/store/index.js', dist: `${srcFolder}/js/store/index.js` },
       { src: 'src/js/store/modules/example.js', dist: `${srcFolder}/js/store/modules/example.js` },
       { src: 'git/gitignore', dist: `.gitignore`},

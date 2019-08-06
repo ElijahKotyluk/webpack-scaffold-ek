@@ -16,6 +16,9 @@ export default {
   data: () => ({
     greet: 'Welcome to your new Vue project',
   }),
+  mounted() {
+    console.log('Current route:', this.$route.name);
+  },
 };
 </script>
 
